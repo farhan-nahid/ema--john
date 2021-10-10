@@ -1,0 +1,33 @@
+nav {
+  margin-bottom: 20px;
+}
+
+nav img {
+  width: 35%;
+  margin: 0 auto;
+  text-align: center;
+  display: block;
+}
+
+nav ul {
+  padding: 15px;
+  margin-top: 20px;
+  text-align: center;
+  background-color: #000;
+}
+
+nav ul li {
+  display: inline-block;
+}
+
+nav ul li a {
+  font-size: 20px;
+  padding: 15px;
+  color: #fff;
+  transition: all 0.3s ease-in;
+}
+
+nav ul li a:hover {
+  color: #000;
+  background-color: #d3d3d3;
+}
