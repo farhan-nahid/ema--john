@@ -2,7 +2,7 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import SingleProduct from "../SingleProduct/SingleProduct";
-import "./shop.module.css";
+import "./shop.css";
 
 const Shop = () => {
   const [products, setProducts] = useState([]);
@@ -10,18 +10,18 @@ const Shop = () => {
   useEffect(() => {
     axios
       .get(
-        "https://raw.githubusercontent.com/ProgrammingHero1/ema-john-simple-resources/master/fakeData/products.JSON"
+        "https://raw.githubusercontent.com/farhan-nahid/ema--john/main/src/fakeData/products.JSON"
       )
-      .then((res) => {
-        setProducts(res.data);
-      })
-      .catch((err) => toast(err.massage));
+      .then((res) => setProducts(res.data))
+      .catch((err) => {
+        toast(err);
+        console.log(err);
+      });
   }, []);
 
   return (
     <section className="shop__container">
       <div className="product__container">
-        <h1>Total Product {products.length}</h1>
         {
           // map the data
           products.map((pd) => (
