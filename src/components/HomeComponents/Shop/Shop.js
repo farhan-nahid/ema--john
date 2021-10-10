@@ -39,9 +39,9 @@ const Shop = () => {
           ))
         }
       </div>
-      <div className="cart__container">
+      <aside className="cart__container">
         <Cart cart={cart} />
-      </div>
+      </aside>
     </section>
   );
 };
