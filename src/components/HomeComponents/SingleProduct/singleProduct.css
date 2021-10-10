@@ -19,9 +19,14 @@ h4 {
   margin-bottom: 16px;
 }
 
+.product__details a {
+  color: #0000ffb0;
+}
+
 .product__card__grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0 30px;
 }
 
 .product__card__grid h6 {
@@ -52,4 +57,8 @@ h4 {
   border-width: 1px;
   padding: 5px 0;
   margin-top: 20px;
+}
+
+.product__card__grid button span {
+  margin-right: 5px;
 }

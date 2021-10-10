@@ -1,0 +1,30 @@
+.cart h3,
+.cart h4 {
+  text-align: center;
+  margin: 0;
+}
+
+.cart h4,
+.cart h2 {
+  font-size: 18px;
+  margin: 20px 0;
+}
+
+.cart p {
+  font-size: 14px;
+  line-height: 30px;
+}
+
+.cart button {
+  border-color: #a88734 #9c7e31 #846a29;
+  border-radius: 3px;
+  vertical-align: middle;
+  background-color: #f0c14b;
+  color: #111;
+  cursor: pointer;
+  width: 100%;
+  text-align: center;
+  border-style: solid;
+  border-width: 1px;
+  padding: 5px 0;
+}
