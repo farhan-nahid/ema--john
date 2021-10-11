@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./cart.css";
 
 const Cart = ({ cart }) => {
+  const [isDisable, setIsDisable] = useState(true);
+
   let price = 0;
   for (const pd of cart) {
     price = price + pd.price;
@@ -16,6 +18,16 @@ const Cart = ({ cart }) => {
   const tax = beforeTax * 0.1;
   const total = beforeTax + tax;
 
+  useEffect(() => {
+    if (total > 0) {
+      setIsDisable(false);
+    }
+  }, [total]);
+
+  const handleClick = () => {
+    console.log("clicked");
+  };
+
   return (
     <div className="cart">
       <h3>Order Summary</h3>
@@ -25,7 +37,9 @@ const Cart = ({ cart }) => {
       <p>Total before tax: $ {beforeTax.toFixed(2)}</p>
       <p>Estimated Tax: $ {tax.toFixed(2)}</p>
       <h2>Order Total: $ {total.toFixed(2)}</h2>
-      <button>Place The Order</button>
+      <button disabled={isDisable} onClick={handleClick}>
+        Place The Order
+      </button>
     </div>
   );
 };

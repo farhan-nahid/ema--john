@@ -28,3 +28,8 @@
   border-width: 1px;
   padding: 5px 0;
 }
+
+.cart button:disabled {
+  background-color: whitesmoke;
+  cursor: not-allowed;
+}
