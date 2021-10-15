@@ -32,21 +32,15 @@ const SingleProduct = ({ product, handleAddToCart }) => {
             {star}
             <h4>Features</h4>
             <ul>
-              <li>
-                {features[0]?.description} <strong>{features[0]?.value}</strong>{" "}
-              </li>
-              <li>
-                {features[1]?.description} <strong>{features[1]?.value}</strong>{" "}
-              </li>
-              <li>
-                {features[2]?.description} <strong>{features[2]?.value}</strong>{" "}
-              </li>
-              <li>
-                {features[3]?.description} <strong>{features[3]?.value}</strong>{" "}
-              </li>
-              <li>
-                {features[4]?.description} <strong>{features[4]?.value}</strong>{" "}
-              </li>
+              {
+                // map all features data
+                features.map((feature, idx) => (
+                  <li key={idx}>
+                    {feature.description ? feature.description : ""}{" "}
+                    <strong>{feature.value ? feature.value : ""}</strong>{" "}
+                  </li>
+                ))
+              }
             </ul>
           </div>
         </div>

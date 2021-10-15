@@ -1,3 +1,31 @@
+.search__container {
+  background-color: #222;
+  padding: 20px;
+  color: #fff;
+}
+
+#search {
+  width: 75%;
+  margin: 0 auto;
+  display: block;
+  line-height: 22px;
+  font-size: 17px;
+  font-family: inherit;
+}
+
+[type="search"]::placeholder,
+[type="search"]::-webkit-input-placeholder {
+  font-family: inherit;
+}
+
+[type="search"]:focus {
+  outline: 0;
+}
+
+[type="search"]::-webkit-search-cancel-button {
+  -webkit-appearance: none;
+}
+
 .shop__container {
   display: grid;
   grid-template-columns: 4fr 1fr;

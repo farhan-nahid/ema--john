@@ -8,6 +8,7 @@ import "./shop.css";
 
 const Shop = () => {
   const [products, setProducts] = useState([]);
+  const [filteredProduct, setFilteredProduct] = useState([]);
   const [cart, setCart] = useState([]);
 
   const handleAddToCart = (product) => {
@@ -20,9 +21,12 @@ const Shop = () => {
       .get(
         "https://raw.githubusercontent.com/farhan-nahid/ema--john/main/src/fakeData/products.JSON"
       )
-      .then((res) => setProducts(res.data))
+      .then((res) => {
+        setFilteredProduct(res.data);
+        setProducts(res.data);
+      })
       .catch((err) => {
-        toast.error(err.massage);
+        toast.error("Something Went Wrong");
       });
   }, []);
 
@@ -30,33 +34,68 @@ const Shop = () => {
     if (products.length) {
       const storedCart = getStoredCart();
       const storedProduct = [];
-      for (const keys in storedCart) {
-        const addedProduct = products.find((product) => product.key === keys);
-        storedProduct.push(addedProduct);
+      for (const key in storedCart) {
+        const addedProduct = products.find((product) => product.key === key);
+        if (addedProduct) {
+          const quantity = storedCart[key];
+          addedProduct.quantity = quantity;
+          storedProduct.push(addedProduct);
+        }
       }
-      console.log(storedProduct);
       setCart(storedProduct);
     }
   }, [products]);
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+  };
+
+  const handleChange = (e) => {
+    const value = e.target.value;
+    if (value) {
+      const searchProduct = products.filter((product) =>
+        product.name.toLowerCase().includes(value.toLowerCase())
+      );
+      if (searchProduct.length) {
+        setFilteredProduct(searchProduct);
+      } else {
+        toast.error("This Product is not Available!!");
+      }
+    }
+  };
+
   return (
-    <section className="shop__container">
-      <div className="product__container">
-        {
-          // map the data
-          products.map((pd) => (
-            <SingleProduct
-              key={pd.key}
-              product={pd}
-              handleAddToCart={handleAddToCart}
-            />
-          ))
-        }
-      </div>
-      <aside className="cart__container">
-        <Cart cart={cart} />
-      </aside>
-    </section>
+    <>
+      <form className="search__container" onSubmit={handleSubmit}>
+        <label htmlFor="search">
+          <input
+            type="search"
+            id="search"
+            autoComplete="off"
+            spellCheck="false"
+            placeholder="Enter a search term"
+            onChange={handleChange}
+          />
+        </label>
+      </form>
+      <section className="shop__container container">
+        <div className="product__container">
+          {
+            // map the data
+            filteredProduct.map((pd) => (
+              <SingleProduct
+                key={pd.key}
+                product={pd}
+                handleAddToCart={handleAddToCart}
+              />
+            ))
+          }
+        </div>
+        <aside className="cart__container">
+          <Cart cart={cart} />
+        </aside>
+      </section>
+    </>
   );
 };
 
