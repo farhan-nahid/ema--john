@@ -1,7 +1,7 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import toast from "react-hot-toast";
-import { addToDb, getStoredCart } from "../../../utilities/fakeDB";
+import { addToDb, getStoredCart } from "../../../utilities/localDB";
 import Cart from "../Cart/Cart";
 import SingleProduct from "../SingleProduct/SingleProduct";
 import "./shop.css";
