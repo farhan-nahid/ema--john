@@ -54,7 +54,7 @@ const Shop = () => {
     const value = e.target.value;
     if (value) {
       const searchProduct = products.filter((product) =>
-        product.category.toLowerCase().includes(value.toLowerCase())
+        product.name.toLowerCase().includes(value.toLowerCase())
       );
       if (searchProduct.length) {
         setFilteredProduct(searchProduct);
