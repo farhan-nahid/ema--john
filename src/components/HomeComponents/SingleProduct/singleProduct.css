@@ -62,3 +62,11 @@ h4 {
 .product__card__grid button span {
   margin-right: 5px;
 }
+
+.star__display {
+  color: #ffbd00;
+}
+
+.star__none {
+  color: rgb(206, 202, 202);
+}

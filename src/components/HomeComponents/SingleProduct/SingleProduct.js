@@ -1,6 +1,8 @@
-import { faShoppingCart } from "@fortawesome/free-solid-svg-icons";
+import { faShoppingCart, faStar } from "@fortawesome/free-solid-svg-icons";
+// import {} from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
+import Rating from "react-rating";
 import "./singleProduct.css";
 
 const SingleProduct = ({ product, handleAddToCart }) => {
@@ -29,7 +31,16 @@ const SingleProduct = ({ product, handleAddToCart }) => {
             </button>
           </div>
           <div>
-            {star}
+            <Rating
+              initialRating={star}
+              readonly
+              emptySymbol={
+                <FontAwesomeIcon icon={faStar} className="star__none" />
+              }
+              fullSymbol={
+                <FontAwesomeIcon icon={faStar} className="star__display" />
+              }
+            />
             <h4>Features</h4>
             <ul>
               {
