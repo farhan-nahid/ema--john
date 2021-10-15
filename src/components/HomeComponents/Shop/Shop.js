@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import toast from "react-hot-toast";
+import { addToDb, getStoredCart } from "../../../utilities/fakeDB";
 import Cart from "../Cart/Cart";
 import SingleProduct from "../SingleProduct/SingleProduct";
 import "./shop.css";
@@ -11,6 +12,7 @@ const Shop = () => {
 
   const handleAddToCart = (product) => {
     setCart([...cart, product]);
+    addToDb(product.key);
   };
 
   useEffect(() => {
@@ -20,10 +22,22 @@ const Shop = () => {
       )
       .then((res) => setProducts(res.data))
       .catch((err) => {
-        toast(err);
-        console.log(err);
+        toast.error(err.massage);
       });
   }, []);
+
+  useEffect(() => {
+    if (products.length) {
+      const storedCart = getStoredCart();
+      const storedProduct = [];
+      for (const keys in storedCart) {
+        const addedProduct = products.find((product) => product.key === keys);
+        storedProduct.push(addedProduct);
+      }
+      console.log(storedProduct);
+      setCart(storedProduct);
+    }
+  }, [products]);
 
   return (
     <section className="shop__container">
