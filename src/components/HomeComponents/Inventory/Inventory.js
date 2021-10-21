@@ -1,7 +1,7 @@
 import React from "react";
 
-const Order = () => {
+const Inventory = () => {
   return <div></div>;
 };
 
-export default Order;
+export default Inventory;
