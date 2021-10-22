@@ -1,5 +1,5 @@
-import { useEffect, useState } from "react";
-import { getStoredCart } from "../utilities/localDB";
+import { useEffect, useState } from 'react';
+import { getStoredCart } from '../utilities/localDB';
 
 const useCart = (products) => {
   const [cart, setCart] = useState([]);

@@ -1,10 +1,10 @@
-import axios from "axios";
-import React, { useEffect, useState } from "react";
-import toast from "react-hot-toast";
-import { addToDb, getStoredCart } from "../../../utilities/localDB";
-import Cart from "../Cart/Cart";
-import SingleProduct from "../SingleProduct/SingleProduct";
-import "./shop.css";
+import axios from 'axios';
+import React, { useEffect, useState } from 'react';
+import toast from 'react-hot-toast';
+import { addToDb, getStoredCart } from '../../../utilities/localDB';
+import Cart from '../Cart/Cart';
+import SingleProduct from '../SingleProduct/SingleProduct';
+import './shop.css';
 
 const Shop = () => {
   const [products, setProducts] = useState([]);
@@ -19,14 +19,14 @@ const Shop = () => {
   useEffect(() => {
     axios
       .get(
-        "https://raw.githubusercontent.com/farhan-nahid/ema--john/main/src/fakeData/products.JSON"
+        'https://raw.githubusercontent.com/farhan-nahid/ema--john/main/src/fakeData/products.JSON'
       )
       .then((res) => {
         setFilteredProduct(res.data);
         setProducts(res.data);
       })
       .catch((err) => {
-        toast.error("Something Went Wrong");
+        toast.error('Something Went Wrong');
       });
   }, []);
 
@@ -59,27 +59,27 @@ const Shop = () => {
       if (searchProduct.length) {
         setFilteredProduct(searchProduct);
       } else {
-        toast.error("This Product is not Available!!");
+        toast.error('This Product is not Available!!');
       }
     }
   };
 
   return (
     <>
-      <form className="search__container" onSubmit={handleSubmit}>
-        <label htmlFor="search">
+      <form className='search__container' onSubmit={handleSubmit}>
+        <label htmlFor='search'>
           <input
-            type="search"
-            id="search"
-            autoComplete="off"
-            spellCheck="false"
-            placeholder="Enter a search term"
+            type='search'
+            id='search'
+            autoComplete='off'
+            spellCheck='false'
+            placeholder='Enter a search term'
             onChange={handleChange}
           />
         </label>
       </form>
-      <section className="shop__container container">
-        <div className="product__container">
+      <section className='shop__container container'>
+        <div className='product__container'>
           {
             // map the data
             filteredProduct.map((pd) => (
@@ -91,7 +91,7 @@ const Shop = () => {
             ))
           }
         </div>
-        <aside className="cart__container">
+        <aside className='cart__container'>
           <Cart cart={cart} />
         </aside>
       </section>

@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from "react";
-import { clearTheCart } from "../../../utilities/localDB";
-import "./cart.css";
+import React, { useEffect, useState } from 'react';
+import { clearTheCart } from '../../../utilities/localDB';
+import './cart.css';
 
 const Cart = ({ cart }) => {
   const [isDisable, setIsDisable] = useState(true);
@@ -37,7 +37,7 @@ const Cart = ({ cart }) => {
   };
 
   return (
-    <form className="cart" onSubmit={handleSubmit}>
+    <form className='cart' onSubmit={handleSubmit}>
       <h3>Order Summary</h3>
       <h4>Items ordered:{totalQuantity}</h4>
       <p>Items: $ {price.toFixed(2)}</p>
@@ -45,7 +45,7 @@ const Cart = ({ cart }) => {
       <p>Total before tax: $ {beforeTax.toFixed(2)}</p>
       <p>Estimated Tax: $ {tax.toFixed(2)}</p>
       <h2>Order Total: $ {total.toFixed(2)}</h2>
-      <button disabled={isDisable} type="submit">
+      <button disabled={isDisable} type='submit'>
         Place The Order
       </button>
     </form>
