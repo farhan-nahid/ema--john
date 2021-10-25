@@ -12,7 +12,18 @@ const Shop = () => {
   const [cart, setCart] = useState([]);
 
   const handleAddToCart = (product) => {
-    setCart([...cart, product]);
+    // setCart([...cart, product]);
+    const exists = cart.find((pd) => pd.key === product.key);
+    let newCart = [];
+    if (exists) {
+      const rest = cart.filter((pd) => pd.key !== product.key);
+      exists.quantity = exists.quantity + 1;
+      newCart = [...rest, exists];
+    } else {
+      product.quantity = 1;
+      newCart = [...cart, product];
+    }
+    setCart(newCart);
     addToDb(product.key);
   };
 
@@ -25,10 +36,8 @@ const Shop = () => {
         setFilteredProduct(res.data);
         setProducts(res.data);
       })
-      .catch((err) => {
-        toast.error('Something Went Wrong');
-      });
-  }, []);
+      .catch((err) => toast.error('Something Went Wrong'));
+  }, [filteredProduct]);
 
   useEffect(() => {
     if (products.length) {
@@ -44,7 +53,7 @@ const Shop = () => {
       }
       setCart(storedProduct);
     }
-  }, [products]);
+  }, [products, filteredProduct]);
 
   const handleSubmit = (e) => {
     e.preventDefault();

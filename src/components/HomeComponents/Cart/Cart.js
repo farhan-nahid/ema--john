@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { clearTheCart } from '../../../utilities/localDB';
+// import { clearTheCart } from '../../../utilities/localDB';
 import './cart.css';
 
 const Cart = ({ cart }) => {
@@ -33,7 +33,7 @@ const Cart = ({ cart }) => {
   }, [total]);
 
   const handleSubmit = (e) => {
-    clearTheCart();
+    // clearTheCart();
   };
 
   return (
