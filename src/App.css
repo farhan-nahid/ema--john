@@ -1,5 +1,5 @@
 /* google fonts */
-@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap');
 
 /* reset all tags default styles */
 
@@ -16,7 +16,7 @@ html {
 }
 
 body {
-  font-family: "Roboto", sans-serif;
+  font-family: 'Roboto', sans-serif;
 }
 
 img {
@@ -46,12 +46,12 @@ a {
 }
 
 .container {
-  width: 1400px;
+  width: 1600px;
   margin: 0 auto;
 }
 
-@media only screen and (max-width: 1500px) {
+@media only screen and (max-width: 1650px) {
   .container {
-    width: 90%;
+    width: 95%;
   }
 }
