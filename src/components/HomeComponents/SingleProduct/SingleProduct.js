@@ -14,7 +14,7 @@ const SingleProduct = ({ product, handleAddToCart }) => {
         <img src={img} alt={name} />
       </div>
       <div className='product__details'>
-        <a href={url} target='blank'>
+        <a href={url} target='_blank' rel='noreferrer'>
           {' '}
           <h4>{name}</h4>
         </a>
