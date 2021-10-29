@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import toast from 'react-hot-toast';
+import { useHistory } from 'react-router';
 import { addToDb, getStoredCart } from '../../../utilities/localDB';
 import Cart from '../Cart/Cart';
 import SingleProduct from '../SingleProduct/SingleProduct';
@@ -10,6 +11,7 @@ const Shop = () => {
   const [products, setProducts] = useState([]);
   const [filteredProduct, setFilteredProduct] = useState([]);
   const [cart, setCart] = useState([]);
+  const history = useHistory();
 
   const handleAddToCart = (product) => {
     // setCart([...cart, product]);
@@ -73,6 +75,10 @@ const Shop = () => {
     }
   };
 
+  const handleClick = () => {
+    history.push('/order-review');
+  };
+
   return (
     <>
       <form className='search__container' onSubmit={handleSubmit}>
@@ -101,7 +107,7 @@ const Shop = () => {
           }
         </div>
         <aside className='cart__container'>
-          <Cart cart={cart} />
+          <Cart cart={cart} text='Review Your Order' click={handleClick} />
         </aside>
       </section>
     </>

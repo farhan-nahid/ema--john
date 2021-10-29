@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 // import { clearTheCart } from '../../../utilities/localDB';
 import './cart.css';
 
-const Cart = ({ cart }) => {
+const Cart = ({ cart, text, click }) => {
   const [isDisable, setIsDisable] = useState(true);
 
   let price = 0;
@@ -45,8 +45,8 @@ const Cart = ({ cart }) => {
       <p>Total before tax: $ {beforeTax.toFixed(2)}</p>
       <p>Estimated Tax: $ {tax.toFixed(2)}</p>
       <h2>Order Total: $ {total.toFixed(2)}</h2>
-      <button disabled={isDisable} type='submit'>
-        Place The Order
+      <button disabled={isDisable} type='submit' onClick={click}>
+        {text}
       </button>
     </form>
   );

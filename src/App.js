@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import './App.css';
 import Inventory from './components/HomeComponents/Inventory/Inventory';
 import OrderReview from './components/HomeComponents/OrderReview/OrderReview';
+import PlaceOrder from './components/HomeComponents/PlaceOrder/PlaceOrder';
 import Footer from './components/Shared/Footer/Footer';
 import NavBar from './components/Shared/NavBar/NavBar';
 import NotFound from './components/Shared/NotFound/NotFound';
@@ -20,6 +21,7 @@ const App = () => {
         <Route path='/shop' component={Home} />
         <Route path='/inventory' component={Inventory} />
         <Route path='/order-review' component={OrderReview} />
+        <Route path='/place-order' component={PlaceOrder} />
         <Route path='*' component={NotFound} />
       </Switch>
       <Footer />
