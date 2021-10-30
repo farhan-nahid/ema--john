@@ -2,6 +2,8 @@ import React from 'react';
 import { Toaster } from 'react-hot-toast';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import './App.css';
+import Login from './components/AuthComponents/LogIn/Login';
+import Register from './components/AuthComponents/Register/Register';
 import Inventory from './components/HomeComponents/Inventory/Inventory';
 import OrderReview from './components/HomeComponents/OrderReview/OrderReview';
 import PlaceOrder from './components/HomeComponents/PlaceOrder/PlaceOrder';
@@ -22,6 +24,8 @@ const App = () => {
         <Route path='/inventory' component={Inventory} />
         <Route path='/order-review' component={OrderReview} />
         <Route path='/place-order' component={PlaceOrder} />
+        <Route path='/login' component={Login} />
+        <Route path='/register' component={Register} />
         <Route path='*' component={NotFound} />
       </Switch>
       <Footer />
