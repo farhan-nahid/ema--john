@@ -11,7 +11,6 @@ import initializeFirebase from '../Firebase/firebase.init';
 initializeFirebase();
 const useFirebase = () => {
   const [loggedInUser, setLoggedInUser] = useState(null);
-  const [error, setError] = useState('');
   const auth = getAuth();
 
   // auth providers
@@ -21,9 +20,7 @@ const useFirebase = () => {
   // google auth
 
   const signInUsingGoogle = () => {
-    signInWithPopup(auth, googleProvider)
-      .then((result) => console.log(result.user))
-      .catch((err) => setError(err.message));
+    return signInWithPopup(auth, googleProvider);
   };
 
   // sign out
@@ -44,7 +41,7 @@ const useFirebase = () => {
 
   // return all functions
 
-  return { loggedInUser, signInUsingGoogle, logOut, error };
+  return { loggedInUser, signInUsingGoogle, logOut };
 };
 
 export default useFirebase;

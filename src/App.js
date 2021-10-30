@@ -3,10 +3,12 @@ import { Toaster } from 'react-hot-toast';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import './App.css';
 import Login from './components/AuthComponents/LogIn/Login';
+import PrivateRoute from './components/AuthComponents/PrivateRoute/PrivateRoute';
 import Register from './components/AuthComponents/Register/Register';
 import Inventory from './components/HomeComponents/Inventory/Inventory';
 import OrderReview from './components/HomeComponents/OrderReview/OrderReview';
 import PlaceOrder from './components/HomeComponents/PlaceOrder/PlaceOrder';
+import Shipping from './components/HomeComponents/Shipping/Shipping';
 import Footer from './components/Shared/Footer/Footer';
 import NavBar from './components/Shared/NavBar/NavBar';
 import NotFound from './components/Shared/NotFound/NotFound';
@@ -25,9 +27,14 @@ const App = () => {
           <Route path='/shop' component={Home} />
           <Route path='/inventory' component={Inventory} />
           <Route path='/order-review' component={OrderReview} />
-          <Route path='/place-order' component={PlaceOrder} />
           <Route path='/login' component={Login} />
           <Route path='/register' component={Register} />
+          <PrivateRoute path='/place-order'>
+            <PlaceOrder />
+          </PrivateRoute>
+          <PrivateRoute path='/shipping'>
+            <Shipping />
+          </PrivateRoute>
           <Route path='*' component={NotFound} />
         </Switch>
         <Footer />
