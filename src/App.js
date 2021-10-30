@@ -10,26 +10,29 @@ import PlaceOrder from './components/HomeComponents/PlaceOrder/PlaceOrder';
 import Footer from './components/Shared/Footer/Footer';
 import NavBar from './components/Shared/NavBar/NavBar';
 import NotFound from './components/Shared/NotFound/NotFound';
+import { AuthContext } from './context/AuthProvider';
 import Home from './pages/Home';
 
 const App = () => {
   return (
-    <Router>
-      <Toaster />
-      <NavBar />
-      <Switch>
-        <Route exact path='/' component={Home} />
-        <Route path='/home' component={Home} />
-        <Route path='/shop' component={Home} />
-        <Route path='/inventory' component={Inventory} />
-        <Route path='/order-review' component={OrderReview} />
-        <Route path='/place-order' component={PlaceOrder} />
-        <Route path='/login' component={Login} />
-        <Route path='/register' component={Register} />
-        <Route path='*' component={NotFound} />
-      </Switch>
-      <Footer />
-    </Router>
+    <AuthContext>
+      <Router>
+        <Toaster />
+        <NavBar />
+        <Switch>
+          <Route exact path='/' component={Home} />
+          <Route path='/home' component={Home} />
+          <Route path='/shop' component={Home} />
+          <Route path='/inventory' component={Inventory} />
+          <Route path='/order-review' component={OrderReview} />
+          <Route path='/place-order' component={PlaceOrder} />
+          <Route path='/login' component={Login} />
+          <Route path='/register' component={Register} />
+          <Route path='*' component={NotFound} />
+        </Switch>
+        <Footer />
+      </Router>
+    </AuthContext>
   );
 };
 
