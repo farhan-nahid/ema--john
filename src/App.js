@@ -10,12 +10,12 @@ import PlaceOrder from './components/HomeComponents/PlaceOrder/PlaceOrder';
 import Footer from './components/Shared/Footer/Footer';
 import NavBar from './components/Shared/NavBar/NavBar';
 import NotFound from './components/Shared/NotFound/NotFound';
-import { AuthContext } from './context/AuthProvider';
+import AuthProvider from './context/AuthProvider';
 import Home from './pages/Home';
 
 const App = () => {
   return (
-    <AuthContext>
+    <AuthProvider>
       <Router>
         <Toaster />
         <NavBar />
@@ -32,7 +32,7 @@ const App = () => {
         </Switch>
         <Footer />
       </Router>
-    </AuthContext>
+    </AuthProvider>
   );
 };
 

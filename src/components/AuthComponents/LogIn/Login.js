@@ -1,8 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import useAuth from '../../../hooks/useAuth';
 import './Login.css';
 
 const Login = () => {
+  const { signInUsingGoogle } = useAuth();
+  // console.log(a);
   return (
     <section className='login__register__form container'>
       <div>
@@ -28,7 +31,7 @@ const Login = () => {
           New to Ema John ? <Link to='/register'>Register</Link>
         </p>
         <h3>------------------- OR -------------------</h3>
-        <button>Google Sign In</button>
+        <button onClick={signInUsingGoogle}>Google Sign In</button>
       </div>
     </section>
   );
