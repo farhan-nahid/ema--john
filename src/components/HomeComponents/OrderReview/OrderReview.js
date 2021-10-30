@@ -33,7 +33,7 @@ const OrderReview = () => {
         ))}
       </div>
       <aside className='cart__container'>
-        <Cart cart={cart} text='Place Order' click={handleClick} />
+        <Cart cart={cart} text='Proceed to Shipping' click={handleClick} />
       </aside>
     </div>
   );
