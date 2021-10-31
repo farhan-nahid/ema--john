@@ -8,7 +8,6 @@
 
 # production
 /build
-/src/Firebase/firebase.config.js
 
 # misc
 .DS_Store
