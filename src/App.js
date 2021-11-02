@@ -12,6 +12,7 @@ import Shipping from './components/HomeComponents/Shipping/Shipping';
 import Footer from './components/Shared/Footer/Footer';
 import NavBar from './components/Shared/NavBar/NavBar';
 import NotFound from './components/Shared/NotFound/NotFound';
+import ScrollToTop from './components/Shared/ScrollToTop/ScrollToTop';
 import AuthProvider from './context/AuthProvider';
 import Home from './pages/Home';
 
@@ -37,6 +38,7 @@ const App = () => {
           </PrivateRoute>
           <Route path='*' component={NotFound} />
         </Switch>
+        <ScrollToTop />
         <Footer />
       </Router>
     </AuthProvider>
