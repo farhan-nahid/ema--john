@@ -2,15 +2,16 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import toast from 'react-hot-toast';
 import { useHistory } from 'react-router';
-import { addToDb, getStoredCart } from '../../../utilities/localDB';
+import useCart from '../../../hooks/useCart';
+import { addToDb } from '../../../utilities/localDB';
 import Cart from '../Cart/Cart';
 import SingleProduct from '../SingleProduct/SingleProduct';
 import './shop.css';
 
 const Shop = () => {
+  const [cart, setCart] = useCart();
   const [products, setProducts] = useState([]);
   const [filteredProduct, setFilteredProduct] = useState([]);
-  const [cart, setCart] = useState([]);
   const [pageCount, setPageCount] = useState(0);
   const [page, setPage] = useState(0);
   const history = useHistory();
@@ -41,22 +42,6 @@ const Shop = () => {
       })
       .catch((err) => toast.error('Something Went Wrong'));
   }, [page]);
-
-  useEffect(() => {
-    if (products.length) {
-      const storedCart = getStoredCart();
-      const storedProduct = [];
-      for (const key in storedCart) {
-        const addedProduct = products.find((product) => product.key === key);
-        if (addedProduct) {
-          const quantity = storedCart[key];
-          addedProduct.quantity = quantity;
-          storedProduct.push(addedProduct);
-        }
-      }
-      setCart(storedProduct);
-    }
-  }, [products, filteredProduct]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
