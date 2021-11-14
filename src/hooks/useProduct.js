@@ -6,8 +6,8 @@ const useProducts = () => {
   const [products, setProducts] = useState([]);
   useEffect(() => {
     axios
-      .get('https://ema--john.herokuapp.com/products')
-      .then((res) => setProducts(res.data))
+      .get('http://localhost:5000/products')
+      .then((res) => setProducts(res.data.products))
       .catch((err) => toast.error('Something Went Wrong'));
   }, []);
   return [products, setProducts];

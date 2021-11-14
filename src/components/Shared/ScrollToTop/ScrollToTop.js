@@ -1,12 +1,10 @@
 import { faArrowCircleUp } from '@fortawesome/free-solid-svg-icons';
-// import {} from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React, { useEffect, useState } from 'react';
 import './ScrollToTop.css';
 
 const ScrollToTop = () => {
   const [isVisible, setIsVisible] = useState(false);
-  console.log(isVisible);
   const toggleVisibility = () => {
     document.body.scrollTop > 200 || document.documentElement.scrollTop > 200
       ? setIsVisible(true)

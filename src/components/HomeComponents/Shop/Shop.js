@@ -11,10 +11,12 @@ const Shop = () => {
   const [products, setProducts] = useState([]);
   const [filteredProduct, setFilteredProduct] = useState([]);
   const [cart, setCart] = useState([]);
+  const [pageCount, setPageCount] = useState(0);
+  const [page, setPage] = useState(0);
   const history = useHistory();
+  const size = 10;
 
   const handleAddToCart = (product) => {
-    // setCart([...cart, product]);
     const exists = cart.find((pd) => pd.key === product.key);
     let newCart = [];
     if (exists) {
@@ -31,13 +33,14 @@ const Shop = () => {
 
   useEffect(() => {
     axios
-      .get('https://ema--john.herokuapp.com/products')
+      .get(`http://localhost:5000/products?page=${page}&&size=${size}`)
       .then((res) => {
-        setFilteredProduct(res.data);
-        setProducts(res.data);
+        setFilteredProduct(res.data.products);
+        setProducts(res.data.products);
+        setPageCount(Math.ceil(res.data.count / size));
       })
       .catch((err) => toast.error('Something Went Wrong'));
-  }, [filteredProduct]);
+  }, [page]);
 
   useEffect(() => {
     if (products.length) {
@@ -103,6 +106,18 @@ const Shop = () => {
               />
             ))
           }
+
+          <div className='pagination'>
+            {[...Array(pageCount).keys()].map((num) => (
+              <button
+                className={num === page ? 'selected' : ''}
+                key={num}
+                onClick={() => setPage(num)}
+              >
+                {num + 1}
+              </button>
+            ))}
+          </div>
         </div>
         <aside className='cart__container'>
           <Cart cart={cart} text='Review Your Order' click={handleClick} />
