@@ -31,9 +31,7 @@ const Shop = () => {
 
   useEffect(() => {
     axios
-      .get(
-        'https://raw.githubusercontent.com/farhan-nahid/ema--john/main/src/fakeData/products.JSON'
-      )
+      .get('https://ema--john.herokuapp.com/products')
       .then((res) => {
         setFilteredProduct(res.data);
         setProducts(res.data);
