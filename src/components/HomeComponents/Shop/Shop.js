@@ -34,7 +34,9 @@ const Shop = () => {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:5000/products?page=${page}&&size=${size}`)
+      .get(
+        `https://ema--john.herokuapp.com/products?page=${page}&&size=${size}`
+      )
       .then((res) => {
         setFilteredProduct(res.data.products);
         setProducts(res.data.products);

@@ -1,19 +1,29 @@
+import axios from 'axios';
 import React from 'react';
 import { useForm } from 'react-hook-form';
+import toast from 'react-hot-toast';
 import useAuth from '../../../hooks/useAuth';
+import { clearTheCart, getStoredCart } from '../../../utilities/localDB';
 import './Shipping.css';
 
 const Shipping = () => {
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors },
   } = useForm();
 
   const { loggedInUser } = useAuth();
+  const savedCart = getStoredCart();
 
   const onSubmit = (data) => {
-    console.log(data);
+    data.cart = savedCart;
+    axios.post('https://ema--john.herokuapp.com/orders', data).then((res) => {
+      toast.success('Order Process Successfully');
+      reset();
+      clearTheCart();
+    });
   };
 
   return (
