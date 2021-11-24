@@ -8,7 +8,11 @@ const Orders = () => {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:5000/all-orders?email=${loggedInUser.email}`)
+      .get(`http://localhost:5000/all-orders?email=${loggedInUser.email}`, {
+        headers: {
+          authorization: `Bearer ${localStorage.getItem('id_token')}`,
+        },
+      })
       .then((res) => setOrders(res.data))
       .catch((err) => console.log(err));
   }, [loggedInUser]);
