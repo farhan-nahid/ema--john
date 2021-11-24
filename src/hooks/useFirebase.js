@@ -1,5 +1,6 @@
 import {
   getAuth,
+  getIdToken,
   GoogleAuthProvider,
   onAuthStateChanged,
   signInWithPopup,
@@ -34,6 +35,9 @@ const useFirebase = () => {
   useEffect(() => {
     onAuthStateChanged(auth, (user) => {
       if (user) {
+        getIdToken(user).then((idToken) =>
+          localStorage.setItem('id_token', idToken)
+        );
         setLoggedInUser(user);
       }
     });
