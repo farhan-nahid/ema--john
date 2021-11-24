@@ -24,10 +24,17 @@ const NavBar = () => {
             <NavLink to='/login'>Login</NavLink>
           </li>
         ) : (
-          <li>
-            <span>Hello : {loggedInUser.displayName}</span>
-            <button onClick={logOut}>Logout</button>
-          </li>
+          <>
+            <li>
+              <NavLink to='/orders'>Orders</NavLink>
+            </li>
+            <li>
+              <span>Hello : {loggedInUser.displayName}</span>
+            </li>
+            <li>
+              <button onClick={logOut}>Logout</button>
+            </li>
+          </>
         )}
       </ul>
     </nav>

@@ -7,6 +7,7 @@ import PrivateRoute from './components/AuthComponents/PrivateRoute/PrivateRoute'
 import Register from './components/AuthComponents/Register/Register';
 import Inventory from './components/HomeComponents/Inventory/Inventory';
 import OrderReview from './components/HomeComponents/OrderReview/OrderReview';
+import Orders from './components/HomeComponents/Orders/Orders';
 import PlaceOrder from './components/HomeComponents/PlaceOrder/PlaceOrder';
 import Shipping from './components/HomeComponents/Shipping/Shipping';
 import Footer from './components/Shared/Footer/Footer';
@@ -32,6 +33,9 @@ const App = () => {
           <Route path='/register' component={Register} />
           <PrivateRoute path='/place-order'>
             <PlaceOrder />
+          </PrivateRoute>
+          <PrivateRoute path='/orders'>
+            <Orders />
           </PrivateRoute>
           <PrivateRoute path='/shipping'>
             <Shipping />

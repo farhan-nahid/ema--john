@@ -19,7 +19,9 @@ const Shipping = () => {
 
   const onSubmit = (data) => {
     data.cart = savedCart;
-    axios.post('https://ema--john.herokuapp.com/orders', data).then((res) => {
+    const loading = toast.loading('Processing Your Order..!!!');
+    axios.post('http://localhost:5000/orders', data).then((res) => {
+      toast.dismiss(loading);
       toast.success('Order Process Successfully');
       reset();
       clearTheCart();
@@ -27,7 +29,7 @@ const Shipping = () => {
   };
 
   return (
-    <form className='shipping-form' onSubmit={handleSubmit(onSubmit)}>
+    <form className='shipping__form' onSubmit={handleSubmit(onSubmit)}>
       <input defaultValue={loggedInUser.displayName} {...register('name')} />
       <input
         defaultValue={loggedInUser.email}
